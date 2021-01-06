@@ -30,6 +30,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "GASDocumenation|GDPlayerState|UI")
 	void ShowAbilityConfirmCancelText(bool ShowText);
 
+	virtual void BeginPlay() override;
+
+	TArray<AGDHeroCharacter*> Characters;
+
+	UFUNCTION(Exec)
+		void ClearSpawnedActors();
 
 	/**
 	* Getters for attributes from GDAttributeSetBase. Returns Current Value unless otherwise specified.
