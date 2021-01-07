@@ -33,15 +33,6 @@ AGDPlayerState::AGDPlayerState()
 	DeadTag = FGameplayTag::RequestGameplayTag(FName("State.Dead"));
 }
 
-void AGDPlayerState::BeginPlay()
-{
-	for (int32 i = 0; i < 5; ++i)
-	{
-		Characters.Add(GetWorld()->SpawnActor(AGDHeroCharacter::StaticClass()));
-	}
-	UE_LOG(LogTemp, Warning, TEXT("5 Character spawned"));
-}
-
 UAbilitySystemComponent * AGDPlayerState::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
@@ -68,15 +59,6 @@ void AGDPlayerState::ShowAbilityConfirmCancelText(bool ShowText)
 			HUD->ShowAbilityConfirmCancelText(ShowText);
 		}
 	}
-}
-
-void AGDPlayerState::ClearSpawnedActors()
-{
-	for (auto Chara : Characters)
-	{
-		Chara->Destroy();
-	}
-	Characters.Empty();
 }
 
 float AGDPlayerState::GetHealth() const
